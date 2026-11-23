@@ -1,0 +1,29 @@
+Security Advisory - Software Supply-Chain Compromise "CedarGate"
+Classification: TLP:CLEAR (example / training data)
+Date: 2026-02-20
+
+Summary
+-------
+A popular open-source build utility was briefly compromised when an attacker
+published a malicious version to a package registry using a stolen maintainer
+token. The malicious release added a post-install script that collected
+environment variables and CI secrets.
+
+Technical Details
+-----------------
+- T1195.002 Supply Chain Compromise: trojanized package version 3.4.1.
+- The post-install script read environment variables matching patterns such as
+  TOKEN, SECRET and KEY and sent them to an attacker-controlled endpoint.
+- Only CI environments that ran an unpinned install within a 9-hour window were
+  affected; pinned lockfiles referencing 3.4.0 were not.
+
+Indicators
+----------
+- Outbound POST requests from build agents to an unfamiliar domain.
+- Unexpected network activity during the package install phase.
+
+Recommendations
+---------------
+- Pin dependencies with lockfiles and enable registry integrity checks.
+- Rotate any CI secrets that may have been exposed during the window.
+- Require hardware-backed MFA for maintainer accounts and short-lived tokens.

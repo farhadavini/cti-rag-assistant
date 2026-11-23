@@ -1,0 +1,30 @@
+data:
+  folder: "data"
+  index_path: "faiss_index"
+  metadata_file: "metadata.json"
+
+chunking:
+  size: 500
+  overlap: 100
+
+embedding:
+  provider: "google"  # google oder openai
+  model: "models/text-embedding-004"  # Google: models/text-embedding-004, OpenAI: text-embedding-3-small
+  # optional: separate API key für embeddings (sonst wird selbe key verwendet in datei : .env)
+  # api_key_env: "GEMINI_API_KEY_EMBEDDINGS"  # oder OPENAI_API_KEY
+
+retrieval:
+  k: 7  
+  use_threshold: false  
+ # threshold: 0.5  # nur wenn use_threshold=true 
+
+llm:
+  provider: "google"  # google (Gemini) oder openai (GPT)
+  model: "gemini-2.0-flash-exp"  # Google: gemini-2.0-flash-exp, OpenAI: gpt-4o-mini
+  api_key_env: "GEMINI_API_KEY"  # OpenAI: OPENAI_API_KEY
+  temperature: 0.0
+  max_tokens: 800
+  chain_type: "stuff"  # stuff (empfohlen), map_reduce, refine, map_rerank
+
+ingestion:
+  batch_size: 1000  # Anzahl Dokumente pro Batch

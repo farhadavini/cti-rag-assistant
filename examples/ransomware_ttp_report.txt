@@ -1,0 +1,33 @@
+Threat Intelligence Report - Ransomware Group "BlackTally"
+Classification: TLP:CLEAR (example / training data)
+Date: 2025-12-03
+
+Summary
+-------
+BlackTally is a double-extortion ransomware operation active since mid-2025.
+The group exfiltrates data before encryption and runs a leak site. Affiliates
+gain access primarily through exposed RDP and unpatched VPN appliances.
+
+Initial Access
+--------------
+- T1133 External Remote Services: brute-forced RDP, and exploitation of a known
+  VPN appliance vulnerability for pre-authentication access.
+
+Credential Access & Lateral Movement
+-------------------------------------
+- T1003 OS Credential Dumping: LSASS memory access with a renamed tool.
+- T1021 Remote Services: SMB and RDP used to move between hosts.
+- Scheduled tasks created for persistence on domain controllers.
+
+Impact
+------
+- T1486 Data Encrypted for Impact: AES-256 file encryption, ChaCha20 for large
+  files. Volume shadow copies deleted via vssadmin before encryption.
+- T1490 Inhibit System Recovery: boot configuration recovery disabled.
+
+Recommendations
+---------------
+- Enforce MFA on all remote access; patch VPN appliances promptly.
+- Restrict LSASS access with attack-surface-reduction rules.
+- Alert on vssadmin delete shadows and bcdedit recovery changes.
+- Keep offline, tested backups.

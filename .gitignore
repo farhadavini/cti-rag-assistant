@@ -1,0 +1,20 @@
+.env
+venv/
+.venv/
+__pycache__/
+*.pyc
+faiss_index/
+metadata.json
+*.log
+data/*
+!data/.gitkeep
+
+# housekeeping/secrets
+instance/
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+.pytest_cache/
+.ruff_cache/

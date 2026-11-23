@@ -1,0 +1,5 @@
+[
+  {"question": "Which initial access techniques does APT29 use?", "expected": ["apt29"]},
+  {"question": "What command-and-control methods are described?", "expected": []},
+  {"question": "Summarise the persistence mechanisms mentioned in the reports.", "expected": []}
+]

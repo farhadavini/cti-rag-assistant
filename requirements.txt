@@ -1,0 +1,18 @@
+# Pinned to compatible major ranges (verified working on Windows / Python 3.12).
+# The LangChain ecosystem changes fast and had a 0.x -> 1.x rewrite, so the
+# split packages are capped to the 1.x line the code targets. The `langchain`
+# meta-package is intentionally NOT required - the code imports the split
+# packages directly (langchain_core / _community / _classic / _text_splitters).
+langchain-core>=1.0,<2
+langchain-community>=0.4,<1
+langchain-classic>=1.0,<2
+langchain-text-splitters>=1.0,<2
+langchain-google-genai>=2.0,<3
+faiss-cpu>=1.7,<2
+pyyaml>=6.0,<7
+python-dotenv>=1.0,<2
+pypdf>=3.17,<7
+flask>=3.0,<4        # only for the optional web UI (web.py)
+
+# Optional: only if OpenAI embeddings/LLM are used (set provider: openai)
+# langchain-openai>=0.3,<1

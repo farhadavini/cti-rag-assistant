@@ -1,0 +1,35 @@
+Threat Intelligence Report - Spear-Phishing Campaign "QuietHarbor"
+Classification: TLP:CLEAR (example / training data)
+Date: 2026-01-14
+
+Summary
+-------
+A spear-phishing campaign tracked as QuietHarbor targeted finance departments of
+mid-sized European manufacturers between November 2025 and January 2026. The
+actor used invoice-themed lures to deliver a lightweight PowerShell downloader.
+
+Initial Access
+--------------
+Victims received emails with a password-protected ZIP attachment. The archive
+contained a shortcut (.lnk) that invoked powershell.exe with an encoded command
+(-EncodedCommand). The downloader retrieved a second stage from a compromised
+WordPress site over HTTPS.
+
+Execution & Defense Evasion
+---------------------------
+- T1059.001 PowerShell: base64-encoded one-liner, AMSI bypass attempt via
+  reflection on System.Management.Automation.AmsiUtils.
+- T1027 Obfuscation: string concatenation and format-operator tricks.
+- T1140 Deobfuscation: gzip-compressed payload decoded in memory.
+
+Command & Control
+-----------------
+The second stage beaconed to a single IP over port 443 at regular 60-second
+intervals (low jitter), a strong beaconing indicator. No domain was used; the
+raw IP suggests throwaway infrastructure.
+
+Recommendations
+---------------
+- Block execution of .lnk files from archive attachments.
+- Enable PowerShell ScriptBlock logging and alert on -EncodedCommand.
+- Monitor for regular-interval outbound connections to raw IPs on 443.
