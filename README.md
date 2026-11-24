@@ -2,6 +2,8 @@
 
 ![CI](../../actions/workflows/ci.yml/badge.svg) ![Code: MIT](https://img.shields.io/badge/Code-MIT-yellow.svg) ![Docs: CC BY 4.0](https://img.shields.io/badge/Docs-CC%20BY%204.0-lightgrey.svg)
 
+**Project page:** [farhadavini.com/projects/cti-rag-assistant](https://farhadavini.com/projects/cti-rag-assistant/) · **Author:** [Farhad Yaghoubi Avini](https://farhadavini.com)
+
 Retrieval-augmented question answering over Cyber Threat Intelligence reports.
 Documents (TXT, PDF, JSON) are chunked, embedded and stored in a local FAISS
 index; questions are answered by an LLM strictly from the retrieved passages,
